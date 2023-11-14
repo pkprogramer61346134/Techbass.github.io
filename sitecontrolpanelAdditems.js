@@ -46,7 +46,7 @@ function  eits()
     for (let i = 0; i < response.message.length; i++) {
                     
 
-              if(Response.message[i].Items_id == argumentValue)
+              if(response.message[i].Items_id == argumentValue)
               {
 
                 var catogry = document.getElementsByName("Catogry")[0];
