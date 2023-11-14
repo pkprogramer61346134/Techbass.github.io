@@ -200,7 +200,7 @@ function selectitems()
         const parentLiId = event.target.closest('li').id;
         console.log('Parent li ID:', parentLiId);
       
-        window.open("sitecontrolpanelAdditems", '_blank');
+        window.open("sitecontrolpanelAdditems.html", '_blank');
       
     });
 
