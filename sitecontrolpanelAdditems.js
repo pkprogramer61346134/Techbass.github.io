@@ -127,18 +127,28 @@ function Addtimes() {
 async function eits() {
   const params = new URLSearchParams(window.location.search);
   const argumentValue = params.get('argument');
-
-  Get_from_Server().then(response => {
+  var catogry = document.getElementById("Catogry");
+  var name = document.getElementById("Name");
+  var detail = document.getElementById("Detail");
+  var price = document.getElementById("price");
+  var brand = document.getElementById("brand");
+  var model = document.getElementById("Model");
+  var button = document.getElementById('submat');
+  var ids = document.getElementById("idss");
+await  Get_from_Server().then(response => {
     for (let i = 0; i < response.message.length; i++) {
       if (response.message[i].Items_id == argumentValue) {
-        var catogry = document.getElementById("Catogry");
-        var name = document.getElementById("Name");
-        var detail = document.getElementById("Detail");
-        var price = document.getElementById("price");
-        var brand = document.getElementById("brand");
-        var model = document.getElementById("Model");
-
-        console.log(response.message[i]);
+       
+        button.textContent = "EDIT";
+        catogry.disabled = true;
+        name.disabled = true;
+        detail.disabled = true;
+        price.disabled = true;
+        brand.disabled = true;
+        model.disabled = true;
+        
+        ids.disabled = true;
+        ids.value = argumentValue;
         catogry.value = response.message[i].category;
         brand.value = response.message[i].brand;
         detail.value = response.message[i].detail;
@@ -153,18 +163,21 @@ async function eits() {
     setTimeout(function () {
 
       loders.style.display = "none";
+      catogry.disabled = false;
+      name.disabled = false;
+      detail.disabled = false;
+      price.disabled = false;
+      brand.disabled = false;
+      model.disabled = false;
+      button.disabled = false;
      
     }, 2000);
+ 
 
   });
+ 
 
-  catogry.disabled = false;
-  name.disabled = false;
-  detail.disabled = false;
-  price.disabled = false;
-  brand.disabled = false;
-  model.disabled = false;
-  button.disabled = false;
+ 
 
 }
 eits();
