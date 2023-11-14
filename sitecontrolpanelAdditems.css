@@ -1,62 +1,108 @@
-* {
+*{
 
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
+}
+body{
+
+   margin: 0;
+   padding: 0;
 
 }
 
-body {
+.mainbaox{
 
-
-    margin: 0;
-    padding: 0;
-
+     position: relative;
+     top: 40px;
+     margin: 20px;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     border: black 2px solid;
 }
 
-.mainbaox {
+
+.imagesbo{
+
+
     position: relative;
+    width: 49%;
+    height: 500px;
     display: flex;
     justify-content: center;
-    top: 40px;
-    width: 80%;
-    left: 50%;
-    transform: translate(-50%,0%);
+    box-shadow: 0 0 5px;
    
+}
+
+.imagesbo img{
+    position: relative;
+    width: 98%;
+    object-fit: contain;
+    
+}
+
+.detalibox{
+
+ position: relative;
+ width: 49%;
+ display: flex;
+ flex-direction: column;
+
+ 
+}
+
+.detalibox input{
+
+     position: relative;
+     width: 90%;
 
 }
 
-.imagesbo {
-
-  position: relative;
-   width: 50%;
-   height: 400px;
- box-shadow: 0 0 5px;
-  background-image: url("images/hp.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-
-}
-
-.detalibox {
-
-     display: flex;
-     flex-direction: column;
-     margin-left: 5px;
-     width: 50%;
-}
 .detalibox button{
-     width: 200px;
-     height: 35px;
-    margin-bottom: 2px;
-    margin-left: 25%;
-
+    margin: 5px;
+    width: 200px;
+    height: 25px;
 }
 
 .detalibox textarea{
-  
-    resize: none;
-    position: relative;
-    width: 98%;
 
+    position: relative;
+    width: 90%;
+    resize: none;
+}
+.loder{
+
+position: absolute;
+top: 40%;
+left: 10%;
+z-index: 1;
+transform: translate(20%,);
+ background-color: rgb(136, 136, 248);
+ height: 50px;
+ width: 80%;
+ margin: 0;
+ padding: 0;
+ border-radius: 50px;
+ 
+ display: none;
+
+}
+
+.filer{
+
+    position: relative;
+    background-color: rgb(40, 40, 193);
+    height: 100%;
+    width: 2%;
+    border-radius: 50px;
+    animation: slideIn 2s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        width: 1%;
+    }
+    to {
+        width: 100%;
+    }
 }

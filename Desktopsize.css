@@ -72,11 +72,22 @@ header {
   display: flex;
   flex-direction: row;
 
-   
+  border: white 2px solid;
   box-shadow: 0 0 5px;
   margin: 5px;
- 
+  transition: all 0.3s ease-in-out;
 
+}
+.lines:hover{
+
+     border: blue 2px solid;
+
+}
+
+.lines:active{
+
+
+  border: red 2px solid;
 }
 
 .imagesbox {

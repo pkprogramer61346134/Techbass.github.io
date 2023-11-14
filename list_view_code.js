@@ -16,7 +16,7 @@ function listview_textbox() {
         listvalue1.setAttribute("id", "boxID");
         listvalue2.setAttribute("id", "boxcategory");
         listvalue3.setAttribute("id", "boxName");
-        listvalue4.setAttribute("id", "brand");
+        listvalue4.setAttribute("id", "braand");
         var Getline = document.getElementById("mylines");
         var mainlist = document.getElementById("mainlu");
 
@@ -52,7 +52,7 @@ function listview_textbox() {
 
           try {
             var clonedDiv = Getline.cloneNode(true);
-           
+              clonedDiv.style.display = "block";
             console.log( clonedDiv.style.height.value);
             clonedDiv.setAttribute("id", Response.message[i].Items_id);
             clonedDiv.setAttribute("name",Response.message[i].category);
@@ -206,6 +206,8 @@ function selectitems()
     });
 
 }
+
+
 
 
  screachingitems();
