@@ -1,0 +1,129 @@
+body {
+
+
+  margin: 0;
+  padding: 0;
+  
+}
+
+header {
+
+  height: 40px;
+  width: auto;
+  box-shadow: 0 0 4px;
+  display: flex;
+  align-items: center;
+
+}
+
+
+.diskbord {
+
+  position: relative;
+  top: 30px;
+  height: 500px;
+  border: black 1px solid;
+  display: none;
+
+}
+
+
+.heding {
+
+  font-size: 30px;
+  text-decoration: none;
+
+
+}
+
+
+.list_and_items_sreaching{
+  position: relative;
+
+   top: 50px;
+   display: none;
+
+}
+
+.items_list {
+  list-style: none;
+  position: relative;
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+ 
+  
+
+
+}
+
+.sreachingboxs{
+
+     
+      display: flex;
+      flex-direction: row;
+
+}
+
+.lines {
+
+  position: relative;
+  display: flex;
+  flex-direction: row;
+
+   
+  box-shadow: 0 0 5px;
+  margin: 5px;
+ 
+
+}
+
+.imagesbox {
+
+ 
+  background-image: url("images/hp.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 250px;
+  width: 250px;
+
+}
+
+.detalisbox {
+
+  width: 250px;
+ 
+
+
+
+
+}
+
+.detalisbox h1 {
+
+  text-align: center;
+}
+
+.detalisbox p {
+
+  position: relative;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  display: -webkit-box;
+      -webkit-line-clamp: 5; /* Number of lines to show */
+      -webkit-box-orient: vertical;
+
+  
+  
+ 
+}
+
+#dropdown{
+
+
+    width: 250px;
+
+}

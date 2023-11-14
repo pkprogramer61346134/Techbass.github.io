@@ -1,0 +1,53 @@
+@media only screen and (max-width: 600px) {
+  
+  
+header{
+
+    height: 40px;
+    width: auto;
+    border: black 0.5px solid;
+    display: flex;
+    align-items: center;
+
+}
+
+
+
+.threeline{
+
+    width: 35px;
+    height: 2px;
+    background-color:  burlywood;
+    margin: 6px 5px;
+   
+ 
+ }
+
+.heding{
+
+  font-size: 30px;
+  text-decoration: none;
+
+}
+
+.lines {
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+   
+  box-shadow: 0 0 5px;
+  margin: 5px;
+ 
+
+}
+
+.sreachingboxs{
+
+  
+  display: flex;
+  flex-direction: column;
+
+}
+}

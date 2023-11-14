@@ -1,0 +1,62 @@
+* {
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+
+}
+
+body {
+
+
+    margin: 0;
+    padding: 0;
+
+}
+
+.mainbaox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    top: 40px;
+    width: 80%;
+    left: 50%;
+    transform: translate(-50%,0%);
+   
+
+}
+
+.imagesbo {
+
+  position: relative;
+   width: 50%;
+   height: 400px;
+ box-shadow: 0 0 5px;
+  background-image: url("images/hp.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
+
+.detalibox {
+
+     display: flex;
+     flex-direction: column;
+     margin-left: 5px;
+     width: 50%;
+}
+.detalibox button{
+     width: 200px;
+     height: 35px;
+    margin-bottom: 2px;
+    margin-left: 25%;
+
+}
+
+.detalibox textarea{
+  
+    resize: none;
+    position: relative;
+    width: 98%;
+
+}
