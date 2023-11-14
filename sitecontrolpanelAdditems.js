@@ -56,12 +56,12 @@ function  eits()
                
                     
                   obj[0].command = "ADD";
-                catogry.textContent = obj[0].filedata[0].catogry ;
-                brand.textContent  =obj[0].filedata[0].brand ;
-                detail.textContent = obj[0].filedata[0].detail ;
-                 price.textContent =obj[0].filedata[0].price ;
-                name.textContent = obj[0].filedata[0].Name ;
-                Model.textContent  =obj[0].filedata[0].model_no ;
+                catogry.textContent =  obj[0].filedata[0].catogry ;
+                brand.textContent  =  obj[0].filedata[0].brand ;
+                detail.textContent =  obj[0].filedata[0].detail ;
+                 price.textContent =  obj[0].filedata[0].price ;
+                name.textContent =   obj[0].filedata[0].Name ;
+                Model.textContent  =  obj[0].filedata[0].model_no ;
 
                          
 
@@ -77,5 +77,7 @@ function  eits()
 
 
 }
+
+eits();
 
 Addtimes();
