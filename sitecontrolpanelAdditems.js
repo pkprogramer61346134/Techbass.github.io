@@ -42,7 +42,7 @@ function  eits()
   console.log(argumentValue);
   Get_from_Server().then(response =>{
 
-    for (let i = 0; i < Response.message.length; i++) {
+    for (let i = 0; i < response.message.length; i++) {
 
               if(Response.message[i].Items_id == argumentValue)
               {
