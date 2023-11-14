@@ -49,7 +49,7 @@ function eits() {
         var brand = document.getElementById("brand");
         var model = document.getElementById("Model");
 
-       
+        console.log(response.message[i]);
         catogry.value = response.message[i].category;
         brand.value = response.message[i].brand;
         detail.value = response.message[i].detail;
