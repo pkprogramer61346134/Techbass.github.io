@@ -39,7 +39,7 @@ function  eits()
 {
   const params = new URLSearchParams(window.location.search);
   const argumentValue = params.get('argument');
-
+  console.log(argumentValue);
   Get_from_Server().then(response =>{
 
     for (let i = 0; i < Response.message.length; i++) {
