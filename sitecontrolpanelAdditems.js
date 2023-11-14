@@ -60,7 +60,6 @@ function eits() {
     }
   });
 }
-
 eits();
 
 Addtimes();
