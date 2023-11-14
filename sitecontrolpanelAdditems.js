@@ -48,8 +48,8 @@ function eits() {
         var price = document.getElementById("price");
         var brand = document.getElementById("brand");
         var model = document.getElementById("Model");
-        var buttons = document.getElementById("submat");
-        buttons.textContent = "EDIT";
+        var button = document.getElementById("submat");
+        button.textContent = "EDIT";
         console.log(response.message[i]);
         catogry.value = response.message[i].category;
         brand.value = response.message[i].brand;
