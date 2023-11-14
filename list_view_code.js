@@ -198,9 +198,10 @@ function selectitems()
       
       
         const parentLiId = event.target.closest('li').id;
-        console.log('Parent li ID:', parentLiId);
       
-        window.open("sitecontrolpanelAdditems.html", '_blank');
+        var url = 'sitecontrolpanelAdditems.html?argument=' + encodeURIComponent(parentLiId);
+
+        window.open(url, '_blank');
       
     });
 
