@@ -55,7 +55,7 @@ function  eits()
                 var Model = document.getElementsByName("Model")[0];
                
                     
-                  obj[0].command = "ADD";
+                
                 catogry.textContent =  obj[0].filedata[0].catogry ;
                 brand.textContent  =  obj[0].filedata[0].brand ;
                 detail.textContent =  obj[0].filedata[0].detail ;
