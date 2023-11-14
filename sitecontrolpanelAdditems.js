@@ -41,8 +41,10 @@ function  eits()
   const argumentValue = params.get('argument');
   console.log(argumentValue);
   Get_from_Server().then(response =>{
+    console.log(response);
 
     for (let i = 0; i < response.message.length; i++) {
+                    
 
               if(Response.message[i].Items_id == argumentValue)
               {
