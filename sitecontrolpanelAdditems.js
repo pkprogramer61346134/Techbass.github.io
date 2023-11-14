@@ -139,7 +139,7 @@ await  Get_from_Server().then(response => {
     for (let i = 0; i < response.message.length; i++) {
       if (response.message[i].Items_id == argumentValue) {
        
-        button.textContent = "EDIT";
+        // button.textContent = "EDIT";
         catogry.disabled = true;
         name.disabled = true;
         detail.disabled = true;
