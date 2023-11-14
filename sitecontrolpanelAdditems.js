@@ -127,32 +127,18 @@ function Addtimes() {
 async function eits() {
   const params = new URLSearchParams(window.location.search);
   const argumentValue = params.get('argument');
-  var mainbox1 = document.getElementById("mainboxs");
-  var catogry = document.getElementById("Catogry");
-  var name = document.getElementById("Name");
-  var detail = document.getElementById("Detail");
-  var price = document.getElementById("price");
-  var brand = document.getElementById("brand");
-  var model = document.getElementById("Model");
-  var button = document.getElementById("submat");
-  var ids = document.getElementById("idss");
 
-
-  catogry.disabled = true;
-  name.disabled = true;
-  detail.disabled = true;
-  price.disabled = true;
-  brand.disabled = true;
-  model.disabled = true;
-  button.disabled = true;
-  ids.disabled = true;
-  await Get_from_Server().then(response => {
+  Get_from_Server().then(response => {
     for (let i = 0; i < response.message.length; i++) {
       if (response.message[i].Items_id == argumentValue) {
+        var catogry = document.getElementById("Catogry");
+        var name = document.getElementById("Name");
+        var detail = document.getElementById("Detail");
+        var price = document.getElementById("price");
+        var brand = document.getElementById("brand");
+        var model = document.getElementById("Model");
 
-        button.textContent = "EDIT";
-
-        ids.value = response.message[i].Items_id
+        console.log(response.message[i]);
         catogry.value = response.message[i].category;
         brand.value = response.message[i].brand;
         detail.value = response.message[i].detail;
@@ -181,7 +167,6 @@ async function eits() {
   button.disabled = false;
 
 }
-
 eits();
 
 Addtimes();
