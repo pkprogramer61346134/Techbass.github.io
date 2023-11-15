@@ -157,7 +157,7 @@ await  Get_from_Server().then(response => {
        
         button.textContent = "EDIT";
       
-       
+        del.disabled = false;
         ids.value = argumentValue;
         catogry.value = response.message[i].category;
         brand.value = response.message[i].brand;
@@ -181,7 +181,7 @@ await  Get_from_Server().then(response => {
       model.disabled = false;
       button.disabled = false;
       button.disabled = false;
-      del.disabled = false;
+      
      
     }, 2000);
  
