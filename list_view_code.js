@@ -52,7 +52,7 @@ function listview_textbox() {
 
           try {
             var clonedDiv = Getline.cloneNode(true);
-              clonedDiv.style.display = "block";
+             
             console.log( clonedDiv.style.height.value);
             clonedDiv.setAttribute("id", Response.message[i].Items_id);
             clonedDiv.setAttribute("name",Response.message[i].category);

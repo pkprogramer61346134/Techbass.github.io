@@ -1,0 +1,36 @@
+@media only screen and (max-width: 750px) {
+   
+    .mainbaox{
+
+        position: relative;
+        top: 40px;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      
+   }
+
+   .imagesbo{
+
+
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 0 5px;
+   
+}
+
+.detalibox{
+
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+   
+    
+   }
+
+  }

@@ -1,4 +1,4 @@
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
   
   
 header{
@@ -30,18 +30,6 @@ header{
 
 }
 
-.lines {
-
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-   
-  box-shadow: 0 0 5px;
-  margin: 5px;
- 
-
-}
 
 .sreachingboxs{
 
@@ -50,4 +38,41 @@ header{
   flex-direction: column;
 
 }
+
+
+.lines {
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: white 2px solid;
+  box-shadow: 0 0 5px;
+  margin: 5px;
+  transition: all 0.3s ease-in-out;
+
+}
+
+.imagesbox {
+
+ 
+  background-image: url("images/hp.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 150px;
+  width: 250px;
+
+}
+.detalisbox {
+
+  width: 250px;
+ 
+
+
+
+
+}
+
+
 }

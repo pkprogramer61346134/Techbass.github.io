@@ -58,12 +58,7 @@ header {
 
 }
 
-.sreachingboxs{
 
-     
-      
-
-}
 
 .sreachingboxs button{
 
@@ -78,7 +73,7 @@ header {
 
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   border: white 2px solid;
   box-shadow: 0 0 5px;
@@ -123,6 +118,7 @@ header {
 .detalisbox h1 {
 
   text-align: center;
+  font-size: 25px;
 }
 
 .detalisbox p {
