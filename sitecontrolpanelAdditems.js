@@ -54,6 +54,8 @@ function Addtimes() {
     var ids = document.getElementById("idss");
     var loders = document.getElementById("loders");
     var filercon = document.getElementById("filercon");
+    var del = document.getElementById("Del");
+   
     if (getbutton.textContent == "EDIT") {
       catogry.disabled = true;
       name.disabled = true;
@@ -63,7 +65,7 @@ function Addtimes() {
       Model.disabled = true;
       getbutton.disabled = true;
       ids.disabled = true;
-
+      del.disabled = true;
       obj[0].command = "EDIT";
       obj[0].filedata[0].Items_id = ids.value;
       obj[0].filedata[0].category = catogry.value;
