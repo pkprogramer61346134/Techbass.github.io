@@ -207,7 +207,12 @@ function selectitems()
 
 }
 
+function newitems(){
 
+    var url = 'sitecontrolpanelAdditems.html';
+
+    window.open(url, '_blank');
+}
 
 
  screachingitems();
