@@ -91,7 +91,7 @@ function Addtimes() {
 
 
       obj[0].command = "ADD";
-      obj[0].filedata[0].catogry = catogry.value;
+      obj[0].filedata[0].category = catogry.value;
       obj[0].filedata[0].brand = brand.value;
       obj[0].filedata[0].detail = detail.value;
       obj[0].filedata[0].price = price.value;
