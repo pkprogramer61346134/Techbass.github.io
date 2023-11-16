@@ -42,7 +42,7 @@ header{
 .items_list {
   list-style: none;
   position: relative;
-  border: black 2px solid;
+  
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
