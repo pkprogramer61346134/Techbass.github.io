@@ -1,6 +1,6 @@
 let Url = "https://script.google.com/macros/s/AKfycbwpo-65HNonX8PRyh1DPSLF0Hkel_E1_yFfcKPMrbxmIhblOsm1_EsN4NN4PVMlw680/exec";
  
- obj = [{
+  const obj = [{
   "command": "Display",
   "address": "data",
   "pageselecter":"sitecontrolpanelAdditems.html",
@@ -13,7 +13,7 @@ let Url = "https://script.google.com/macros/s/AKfycbwpo-65HNonX8PRyh1DPSLF0Hkel_
     "Name": "Acer Gaming",
     "detail": "Ram 8gb and  HDD 500Gb Processer is best i7 6th genrations  the made for games user enjoy the best Gaming eproyains",
     "price": "65000",
-    "Images": "classi",
+    "Images": [],
     "model_no": "Acer nitro"
 
   }]

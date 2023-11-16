@@ -31,58 +31,58 @@ function listview_textbox() {
                 opetions3.text = Response.message[i].Name;
 
 
-                
+
                 if (Response.message[i].category != Response.message[i - 1].category) {
                     var opetions2 = document.createElement("option");
                     opetions2.text = Response.message[i].category;
-                  
-                    
+
+
 
                     listvalue2.appendChild(opetions2);
-                   
+
 
                 }
 
-               
+
 
 
                 listvalue1.appendChild(opetions1);
 
                 listvalue3.appendChild(opetions3);
 
-          try {
-            var clonedDiv = Getline.cloneNode(true);
-             
-            console.log( clonedDiv.style.height.value);
-            clonedDiv.setAttribute("id", Response.message[i].Items_id);
-            clonedDiv.setAttribute("name",Response.message[i].category);
-            var imagebox = clonedDiv.querySelector("#imagesbo");
+                try {
+                    var clonedDiv = Getline.cloneNode(true);
 
-            
-            var productname = clonedDiv.querySelector("#Producatnamehedin");
-            productname.textContent = Response.message[i].Name;
-            var detailes = clonedDiv.querySelector("#Producatdetali");
-            
-            detailes.textContent = Response.message[i].detail;
-            var pricees = clonedDiv.querySelector("#ProducatPric");
-            pricees.textContent = "RS."  +Response.message[i].price;
-
-            mainlist.appendChild(clonedDiv);
-            
-          } catch (error) {
-            if (Response.message[i].brand != Response.message[i - 1].brand) {
-                var opetion4 = document.createElement("option");
-                opetion4.text = Response.message[i].brand;
-              
+                    console.log(clonedDiv.style.height.value);
+                    clonedDiv.setAttribute("id", Response.message[i].Items_id);
+                    clonedDiv.setAttribute("name", Response.message[i].category);
+                    var imagebox = clonedDiv.querySelector("#imagesbo");
 
 
-                listvalue4.appendChild(opetion4);
+                    var productname = clonedDiv.querySelector("#Producatnamehedin");
+                    productname.textContent = Response.message[i].Name;
+                    var detailes = clonedDiv.querySelector("#Producatdetali");
 
-            }
+                    detailes.textContent = Response.message[i].detail;
+                    var pricees = clonedDiv.querySelector("#ProducatPric");
+                    pricees.textContent = "RS." + Response.message[i].price;
 
-            
-          }
-               
+                    mainlist.appendChild(clonedDiv);
+
+                } catch (error) {
+                    if (Response.message[i].brand != Response.message[i - 1].brand) {
+                        var opetion4 = document.createElement("option");
+                        opetion4.text = Response.message[i].brand;
+
+
+
+                        listvalue4.appendChild(opetion4);
+
+                    }
+
+
+                }
+
 
 
 
@@ -98,19 +98,19 @@ function listview_textbox() {
             mainlistvolume.appendChild(listvalue1);
             mainlistvolume.appendChild(listvalue2);
             mainlistvolume.appendChild(listvalue3);
-           
+
             mainlistvolume.style.display = "block";
             Getidbox[0].setAttribute("list", "boxID");
             GetCatogrybox[0].setAttribute("list", "boxcategory");
             Getnamebox[0].setAttribute("list", "boxName");
-            
+
         } catch (error) {
             getAddtimesmainid.appendChild(listvalue4);
             getAddtimesmainid.appendChild(listvalue2);
-            
+
         }
 
-       
+
 
 
 
@@ -122,92 +122,109 @@ function listview_textbox() {
 }
 
 
-function screachingitems(){
+function screachingitems() {
 
     try {
         var items_list = document.getElementById('mainlu').getElementsByTagName('li');
-    var GetCatogrybox = document.getElementsByName("Catogry")[0];
-    var Getnamebox = document.getElementsByName("Name")[0];
-    var Getidbox = document.getElementsByName("ID")[0];
-    
-
-    Getidbox.addEventListener("input",()=>{
-           GetCatogrybox.value = "";
-           Getnamebox.value = "";
-        
-          for (let i = 0; i < items_list.length; i++) {
-            const text = items_list[i].id;
-            const displayStyle = text.includes(Getidbox.value) ? 'block' : 'none';
-            console.log(displayStyle);
-            items_list[i].style.display = displayStyle;
-        }
-
-    });
-   
-     GetCatogrybox.addEventListener("input",() =>{
-
-         Getidbox.value = "";
-         Getnamebox.value = "";
-        for (let i = 0; i < items_list.length; i++) {
-          const text = items_list[i].getAttribute("name");
-        
-          const displayStyle = text.includes(GetCatogrybox.value) ? 'block' : 'none';
-          console.log(displayStyle);
-          items_list[i].style.display = displayStyle;
-      }
+        var GetCatogrybox = document.getElementsByName("Catogry")[0];
+        var Getnamebox = document.getElementsByName("Name")[0];
+        var Getidbox = document.getElementsByName("ID")[0];
 
 
+        Getidbox.addEventListener("input", () => {
+            GetCatogrybox.value = "";
+            Getnamebox.value = "";
 
-     });
-   
-    Getnamebox.addEventListener("input",() =>{
-           
-        Getidbox.value = "";
-        GetCatogrybox.value = "";
-        for (let i = 0; i < items_list.length; i++) {
-          const text = items_list[i].querySelector("#Producatnamehedin").textContent;
-          
-          const displayStyle = text.includes(Getnamebox.value) ? 'block' : 'none';
-          console.log(displayStyle);
-          items_list[i].style.display = displayStyle;
-      }
+            for (let i = 0; i < items_list.length; i++) {
+                const text = items_list[i].id;
+
+
+                if (text.includes(Getidbox.value)) {
+                    items_list[i].classList.remove("noes-contrns");
+                    items_list[i].classList.add("lines");
+                } else {
+                    items_list[i].classList.remove("lines");
+                    items_list[i].classList.add("noes-contrns");
+                }
+
+            }
+
+        });
+
+        GetCatogrybox.addEventListener("input", () => {
+
+            Getidbox.value = "";
+            Getnamebox.value = "";
+            for (let i = 0; i < items_list.length; i++) {
+                const text = items_list[i].getAttribute("name");
+
+                if (text.includes(GetCatogrybox.value)) {
+                    items_list[i].classList.remove("noes-contrns");
+                    items_list[i].classList.add("lines");
+                } else {
+                    items_list[i].classList.remove("lines");
+                    items_list[i].classList.add("noes-contrns");
+                }
+            }
 
 
 
-     });    
-        
+        });
+
+        Getnamebox.addEventListener("input", () => {
+
+            Getidbox.value = "";
+            GetCatogrybox.value = "";
+            for (let i = 0; i < items_list.length; i++) {
+                const text = items_list[i].querySelector("#Producatnamehedin").textContent;
+
+
+
+                if (text.includes(Getnamebox.value)) {
+                    items_list[i].classList.remove("noes-contrns");
+                    items_list[i].classList.add("lines");
+                } else {
+                    items_list[i].classList.remove("lines");
+                    items_list[i].classList.add("noes-contrns");
+                }
+
+            }
+
+
+
+        });
+
     } catch (error) {
-         console.log(error);
-        
-    }
-    
+        console.log(error);
 
-             
+    }
+
+
+
 
 }
 
-function selectitems()
-{
+function selectitems() {
 
     const myList = document.getElementById('mainlu');
-   
-  
-    myList.addEventListener('click', function(event) {
-      
-        
-      
-      
+
+
+    myList.addEventListener('click', function (event) {
+
+
+
+
         const parentLiId = event.target.closest('li').id;
-      
+
         var url = 'sitecontrolpanelAdditems.html?argument=' + encodeURIComponent(parentLiId);
 
         window.open(url, '_blank');
-      
+
     });
 
 }
 
-function newitems(){
+function newitems() {
 
     var url = 'sitecontrolpanelAdditems.html';
 
@@ -215,7 +232,7 @@ function newitems(){
 }
 
 
- screachingitems();
+screachingitems();
 
 listview_textbox();
 selectitems();

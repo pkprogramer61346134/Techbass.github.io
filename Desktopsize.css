@@ -74,13 +74,19 @@ header {
   position: relative;
   display: flex;
   flex-direction: column;
-
+  align-items: center;
   border: white 2px solid;
   box-shadow: 0 0 5px;
   margin: 5px;
   transition: all 0.3s ease-in-out;
 
 }
+
+.noes-contrns{
+
+  display: none;
+}
+
 .lines:hover{
 
      border: blue 2px solid;
@@ -100,14 +106,14 @@ header {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  height: 250px;
-  width: 250px;
+  height: 150px;
+  width: 200px;
 
 }
 
 .detalisbox {
 
-  width: 250px;
+  width: 150px;
  
 
 
