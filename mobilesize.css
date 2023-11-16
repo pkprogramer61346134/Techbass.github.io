@@ -42,12 +42,14 @@ header{
 .items_list {
   list-style: none;
   position: relative;
-  
+  height: 90%;
+  margin: 20px;
+  padding: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
  
-  
+  border: black 2px solid;
 
 
 }
@@ -58,14 +60,16 @@ header{
 
   position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: center;
   border: white 2px solid;
-  box-shadow: 0 0 5px;
+  box-shadow: 0 0 5px blue;
+  border-radius: 100px;
   margin: 5px;
+  padding: 0;
   transition: all 0.3s ease-in-out;
-  height: 400px;
-  width: 150px;
+  height: 300px;
+  width: 500px;
  
 
 }
@@ -78,7 +82,9 @@ header{
   background-repeat: no-repeat;
   background-size: contain;
   position: relative;
-  width: 100%;
+ 
+  margin: 5px;
+  width: 50%;
   height: 50%;
 
 }
@@ -86,7 +92,7 @@ header{
 
   position: relative;
   height: 50%;
-  width: 100%;
+  width: 50%;
  
  
 
