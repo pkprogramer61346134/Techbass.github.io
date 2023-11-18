@@ -1,4 +1,6 @@
 var loders = document.getElementById('loder');
+var filesttas = [];
+var index = 0
 function Addtimes() {
 
   var getbutton = document.getElementById('Del');
@@ -13,6 +15,7 @@ function Addtimes() {
     var ids = document.getElementById("idss");
     var loders = document.getElementById('loders');
     var del = document.getElementById("Del");
+
     del.disabled = true;
     loders.classList.add("loder");
     catogry.disabled = true;
@@ -29,8 +32,8 @@ function Addtimes() {
     Get_from_Server().then(response => {
 
 
-      console.log(response);
       
+
       setTimeout(function () {
 
         loders.classList.remove("loder");
@@ -74,13 +77,13 @@ function Addtimes() {
       obj[0].filedata[0].Name = name.value;
       obj[0].filedata[0].model_no = Model.value;
 
-      console.log(obj);
+      
 
     }
 
 
     if (getbutton.textContent == "ADD") {
-    
+
       catogry.disabled = true;
       name.disabled = true;
       detail.disabled = true;
@@ -98,17 +101,18 @@ function Addtimes() {
       obj[0].filedata[0].price = price.value;
       obj[0].filedata[0].Name = name.value;
       obj[0].filedata[0].model_no = Model.value;
-        console.log(obj[0].filedata[0].Images);
+      
     }
 
     Get_from_Server().then(response => {
 
 
-    
+
       setTimeout(function () {
 
         loders.classList.remove("loder");
-       
+        window.close();
+
       }, 2000);
 
       catogry.disabled = false;
@@ -141,6 +145,7 @@ async function eits() {
   var ids = document.getElementById("idss");
   var del = document.getElementById("Del");
   var loders = document.getElementById('loders');
+  var iamgs = document.getElementById("ima");
   ids.disabled = true;
   del.disabled = true;
   button.disabled = true;
@@ -166,10 +171,24 @@ async function eits() {
         price.value = response.message[i].price;
         name.value = response.message[i].Name;
         model.value = response.message[i].model_no;
+        filesttas.length = 0;
+        filesttas = response.message[i].Images.split(' ,');
+
+        snapcontroler(filesttas.length, null);
+        snapcontroler(0, 'span' + 0, 1);
+          var img = new Image();
+        img.src = filesttas[0];
+        img.onload = function () {
+          iamgs.src = img.src;
+        };
+
+
+        index = 1;
+
       }
     }
 
-    
+
     setTimeout(function () {
 
       loders.classList.remove("loder");
@@ -193,50 +212,60 @@ async function eits() {
 
 }
 
-function snapcontroler(maker,selcter,teger){
+function snapcontroler(maker, selcter, teger) {
 
   var snapcr = document.getElementById('span0');
-  var cusf =  document.getElementById('curmain');
- 
- 
- if(0 != maker)
- {
-  while (cusf.firstChild) {
-    cusf.removeChild(cusf.firstChild);
-  }
-  for (let v = 0; v < maker; v++) {
-    
-    var newspan =  snapcr.cloneNode(true);
-    newspan.setAttribute("id",'span'+ v );
-    newspan.setAttribute("class","curcul");
-    cusf.appendChild(newspan);
-    
-  }
- 
- }
+  var cusf = document.getElementById('curmain');
 
- if(teger == 1)
- {
-  var snapcr = document.getElementById(selcter);
-  snapcr.style.backgroundColor = "black";
-    
- }
- if(teger == 2)
- {
-  var snapcr = document.getElementById(selcter);
-  snapcr.style.backgroundColor = "white";
-    
- }
- 
+
+  if (0 != maker) {
+    while (cusf.firstChild) {
+      cusf.removeChild(cusf.firstChild);
+    }
+    for (let v = 0; v < maker; v++) {
+
+      var newspan = document.createElement("span");
+      newspan.setAttribute("id", 'span' + v);
+      newspan.setAttribute("class", "curcul");
+   
+      newspan.style.backgroundColor =   "white";
+      cusf.appendChild(newspan);
+
+    }
+
+  }
+
+  if (teger == 1) {
+    var snapcr = document.getElementById(selcter);
+   
+    snapcr.style.backgroundColor = "black";
+
+  }
+  if (teger == 2) {
+
+   
+    var snapcr = document.getElementById(selcter);
+    snapcr.style.backgroundColor = "white";
+
+  }
+
+  if(teger == 3)
+  {
+
+    while (cusf.firstChild) {
+      cusf.removeChild(cusf.firstChild);
+    }
+  }
+
 
 
 }
-var filesttas = [];
+
 function openFileInput() {
- 
+
   var waitlick = document.getElementById('ima');
- 
- 
+
+
   waitlick.addEventListener("click", () => {
     var fileInput = document.createElement('input');
     fileInput.type = 'file';
@@ -246,10 +275,10 @@ function openFileInput() {
     document.body.appendChild(fileInput);
     fileInput.click();
     fileInput.addEventListener("change", () => {
-      
+
+      filesttas.length = 0;
      
-      // Clear existing entries (if any)
-     
+
 
       var promises = [];
 
@@ -258,28 +287,32 @@ function openFileInput() {
 
         promises.push(getBase64(file));
       }
-      
 
-      
-    
-          
-      
+
+
+
+
+
 
       obj[0].filedata[0].Images.length = 0;
       Promise.all(promises)
         .then((base64Images) => {
 
-          
-          base64Images.forEach((element,index) => {
 
-           
-            obj[0].filedata[0].Images.push(element);
-      
-                 
-        })
-        snapcontroler(  obj[0].filedata[0].Images.length,null);
-        waitlick.src =  filesttas[0]; 
-        console.log(filesttas);
+          base64Images.forEach((element, index) => {
+
+
+
+            filesttas.push(element);
+
+          })
+           index = 1;
+          obj[0].filedata[0].Images = filesttas;
+          snapcontroler(filesttas.length, 0,0);
+
+          waitlick.src = filesttas[0];
+          snapcontroler(0, 'span' + 0, 1);
+          
         })
         .catch((error) => {
           console.error("Error loading images:", error);
@@ -288,7 +321,7 @@ function openFileInput() {
 
 
         });
-       
+
 
 
     });
@@ -296,48 +329,96 @@ function openFileInput() {
     document.body.removeChild(fileInput);
   });
 
+
+
+
+
+
+
+}
+
+function imagesellerter() {
+
+  var list = document.getElementById("left");
+  var right = document.getElementById("right");
+  var iamgs = document.getElementById("ima");
+  var del = document.getElementById("del");
+  list.addEventListener("click", () => {
+    
+    if (index != 1) {
+      index--;
+     
+      snapcontroler(0, 'span' + index, 2);
+     
+      var img = new Image();
+      img.src = filesttas[index-1];
+      img.onload = function () {
+        iamgs.src = img.src;
+      };
+
+
+    }
+
+  });
+  right.addEventListener("click", () => {
+   
+    if (filesttas.length > index) {
+      
+      index++;
+     
+      var cou = index - 1;
+      snapcontroler(0, 'span' + cou, 1);
+      var img = new Image();
+      img.src = filesttas[index-1];
+      img.onload = function () {
+        iamgs.src = img.src;
+      };
+
+    }
+
+  });
+
+
+
+
+ 
+  del.addEventListener("click", () => {
+
+    var waitlick = document.getElementById('ima');
+       console.log(filesttas.length);
+    if (filesttas.length == 1 ) {
+
+      snapcontroler(0, 'span' + 0, 3);
+      filesttas.splice(index-1,1);
+      waitlick.src = null;
+
+      
+    } else {
+
+      if (filesttas.length > 0) {
+
+        filesttas.splice(index-1,1);
+    
+        obj[0].filedata[0].Images = filesttas;
+        snapcontroler(filesttas.length, 0,0);
+        waitlick.src = filesttas[0];
+        snapcontroler(0, 'span' + 0, 1);
+        index = 1;
+        
+      }
+     
+    
+    }
    
 
 
 
-        
 
-}
- var index = 0
-function  imagesellerter(){
 
-        var list = document.getElementById("left");
-        var right = document.getElementById("right");
-        var iamgs = document.getElementById("ima");
-       
-        list.addEventListener("click",() =>{
-          console.log("list");
-          if( index > 0)
-          {
-            index--;
-            console.log(index);
-            snapcontroler(0,'span'+index,2);
-            iamgs.src =   obj[0].filedata[0].Images[index]; 
-           
-             
-          }               
 
-        });
-        right.addEventListener("click",()=>{
-       
 
-          if( obj[0].filedata[0].Images.length > index)
-          {
-            
-            index++;
-            console.log(index);
-            var cou = index-1;
-            snapcontroler(0,'span'+cou,1);
-            iamgs.src =   obj[0].filedata[0].Images[index-1];  
-         
-          }        
 
-        });
+  });
 
 }
 

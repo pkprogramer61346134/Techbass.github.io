@@ -1,4 +1,6 @@
-function listview_textbox() {
+document.addEventListener("DOMContentLoaded", function() {
+   
+
 
 
     Get_from_Server().then(Response => {
@@ -52,12 +54,13 @@ function listview_textbox() {
 
                 try {
                     var clonedDiv = Getline.cloneNode(true);
-
+                         
                     console.log(clonedDiv.style.height.value);
                     clonedDiv.setAttribute("id", Response.message[i].Items_id);
                     clonedDiv.setAttribute("name", Response.message[i].category);
                     var imagebox = clonedDiv.querySelector("#productimg");
-                    imagebox.setAttribute("src", Response.message[i].Images[0]);
+                    var imagesvalue = Response.message[i].Images.split(' ,');
+                    imagebox.setAttribute("src",imagesvalue[0] );
 
                               
                     var productname = clonedDiv.querySelector("#Producatnamehedin");
@@ -69,6 +72,8 @@ function listview_textbox() {
                     pricees.textContent = "RS." + Response.message[i].price;
 
                     mainlist.appendChild(clonedDiv);
+                    clonedDiv.classList.remove("noes-contrns");
+                    clonedDiv.classList.add("lines");
 
                 } catch (error) {
                     if (Response.message[i].brand != Response.message[i - 1].brand) {
@@ -120,8 +125,7 @@ function listview_textbox() {
     });
 
 
-}
-
+});
 
 
 
@@ -234,8 +238,7 @@ function newitems() {
     window.open(url, '_blank');
 }
 
-
+selectitems();
 screachingitems();
 
-listview_textbox();
-selectitems();
+
