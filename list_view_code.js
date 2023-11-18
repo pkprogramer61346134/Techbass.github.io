@@ -56,13 +56,14 @@ function listview_textbox() {
                     console.log(clonedDiv.style.height.value);
                     clonedDiv.setAttribute("id", Response.message[i].Items_id);
                     clonedDiv.setAttribute("name", Response.message[i].category);
-                    var imagebox = clonedDiv.querySelector("#imagesbo");
+                    var imagebox = clonedDiv.querySelector("#productimg");
+                    imagebox.setAttribute("src", Response.message[i].Images[0]);
 
-
+                              
                     var productname = clonedDiv.querySelector("#Producatnamehedin");
                     productname.textContent = Response.message[i].Name;
                     var detailes = clonedDiv.querySelector("#Producatdetali");
-
+                     
                     detailes.textContent = Response.message[i].detail;
                     var pricees = clonedDiv.querySelector("#ProducatPric");
                     pricees.textContent = "RS." + Response.message[i].price;
@@ -120,6 +121,8 @@ function listview_textbox() {
 
 
 }
+
+
 
 
 function screachingitems() {

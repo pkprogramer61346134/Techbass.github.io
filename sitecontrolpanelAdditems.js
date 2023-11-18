@@ -14,7 +14,7 @@ function Addtimes() {
     var loders = document.getElementById('loders');
     var del = document.getElementById("Del");
     del.disabled = true;
-
+    loders.classList.add("loder");
     catogry.disabled = true;
     name.disabled = true;
     detail.disabled = true;
@@ -30,7 +30,7 @@ function Addtimes() {
 
 
       console.log(response);
-      loders.classList.add("loder");
+      
       setTimeout(function () {
 
         loders.classList.remove("loder");
@@ -52,7 +52,7 @@ function Addtimes() {
     var Model = document.getElementsByName("Model")[0];
     var ids = document.getElementById("idss");
     var loders = document.getElementById('loders');
-   
+    loders.classList.add("loder");
     var del = document.getElementById("Del");
 
     if (getbutton.textContent == "EDIT") {
@@ -80,7 +80,7 @@ function Addtimes() {
 
 
     if (getbutton.textContent == "ADD") {
-
+    
       catogry.disabled = true;
       name.disabled = true;
       detail.disabled = true;
@@ -98,17 +98,17 @@ function Addtimes() {
       obj[0].filedata[0].price = price.value;
       obj[0].filedata[0].Name = name.value;
       obj[0].filedata[0].model_no = Model.value;
-
+        console.log(obj[0].filedata[0].Images);
     }
 
     Get_from_Server().then(response => {
 
 
-      loders.classList.add("loder");
+    
       setTimeout(function () {
 
         loders.classList.remove("loder");
-        window.close();
+       
       }, 2000);
 
       catogry.disabled = false;
@@ -150,7 +150,7 @@ async function eits() {
   price.disabled = true;
   brand.disabled = true;
   model.disabled = true;
-
+  loders.classList.add('loder');
 
   await Get_from_Server().then(response => {
     for (let i = 0; i < response.message.length; i++) {
@@ -169,7 +169,7 @@ async function eits() {
       }
     }
 
-    loders.classList.add('loder');
+    
     setTimeout(function () {
 
       loders.classList.remove("loder");
@@ -246,10 +246,10 @@ function openFileInput() {
     document.body.appendChild(fileInput);
     fileInput.click();
     fileInput.addEventListener("change", () => {
-      var imagesArray = obj[0].filedata[0].Images;
+      
      
       // Clear existing entries (if any)
-      imagesArray.length = 0;
+     
 
       var promises = [];
 
@@ -258,27 +258,26 @@ function openFileInput() {
 
         promises.push(getBase64(file));
       }
-      obj[0].filedata[0].Images = promises;
+      
 
       
     
-
+          
       
 
-      filesttas.length = 0;
-      Promise.all(obj[0].filedata[0].Images)
+      obj[0].filedata[0].Images.length = 0;
+      Promise.all(promises)
         .then((base64Images) => {
 
           
           base64Images.forEach((element,index) => {
 
            
-
-           filesttas[index] = element
+            obj[0].filedata[0].Images.push(element);
       
                  
         })
-        snapcontroler( filesttas.length,null);
+        snapcontroler(  obj[0].filedata[0].Images.length,null);
         waitlick.src =  filesttas[0]; 
         console.log(filesttas);
         })
@@ -318,7 +317,7 @@ function  imagesellerter(){
             index--;
             console.log(index);
             snapcontroler(0,'span'+index,2);
-            iamgs.src =  filesttas[index]; 
+            iamgs.src =   obj[0].filedata[0].Images[index]; 
            
              
           }               
@@ -327,14 +326,14 @@ function  imagesellerter(){
         right.addEventListener("click",()=>{
        
 
-          if( filesttas.length > index)
+          if( obj[0].filedata[0].Images.length > index)
           {
             
             index++;
             console.log(index);
             var cou = index-1;
             snapcontroler(0,'span'+cou,1);
-            iamgs.src =  filesttas[index-1];  
+            iamgs.src =   obj[0].filedata[0].Images[index-1];  
          
           }        
 

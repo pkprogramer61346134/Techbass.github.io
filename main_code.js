@@ -1,4 +1,4 @@
-let Url = "https://script.google.com/macros/s/AKfycbwpo-65HNonX8PRyh1DPSLF0Hkel_E1_yFfcKPMrbxmIhblOsm1_EsN4NN4PVMlw680/exec";
+let Url = "https://script.google.com/macros/s/AKfycbxTZpQZYBW8GEVzVJA6LoIvKW7IkYnq8swN0LiREvTVh_YIkKPFmjSEPIG1n8KLTk8n/exec";
  
   const obj = [{
   "command": "Display",
@@ -20,9 +20,11 @@ let Url = "https://script.google.com/macros/s/AKfycbwpo-65HNonX8PRyh1DPSLF0Hkel_
 }]
 
 
-function Get_from_Server(){
+ function Get_from_Server(){
 
+    console.log( obj[0].filedata[0].Images);
   return fetch(Url, {
+       
 
        method: "POST",
        body: JSON.stringify(obj)

@@ -102,14 +102,22 @@ header {
 .imagesbox {
 
  
-  background-image: url("images/hp.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+ 
   height: 150px;
   width: 200px;
 
 }
+.imagesbox img{
+
+  position: relative;
+  width: 98%;
+  object-fit: contain;
+  transition: src 2s ease-in-out;
+
+
+}
+
+
 
 .detalisbox {
 
