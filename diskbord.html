@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        .item-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        @media screen and (min-width: 768px) {
+            section {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Dashboard</h1>
+    </header>
+
+    <section>
+        <div>
+            <h2>Order Totals</h2>
+            <ul class="item-list">
+                <li class="item">Order 1: $100</li>
+                <li class="item">Order 2: $150</li>
+                <!-- Add more order items here -->
+            </ul>
+        </div>
+
+        <div>
+            <h2>Categories</h2>
+            <ul class="item-list">
+                <li class="item">Category 1</li>
+                <li class="item">Category 2</li>
+                <!-- Add more category items here -->
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <div>
+            <h2>New Added Items</h2>
+            <ul class="item-list">
+                <li class="item">Item 1</li>
+                <li class="item">Item 2</li>
+                <!-- Add more new item entries here -->
+            </ul>
+        </div>
+
+        <div>
+            <h2>Best Desktop</h2>
+            <ul class="item-list">
+                <li class="item">Desktop 1</li>
+                <li class="item">Desktop 2</li>
+                <!-- Add more best desktop entries here -->
+            </ul>
+        </div>
+    </section>
+
+</body>
+
+</html>

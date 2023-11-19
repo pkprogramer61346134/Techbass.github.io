@@ -1,0 +1,148 @@
+* {
+
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
+
+#mainbox {
+
+
+
+    position: relative;
+    top: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+
+}
+
+#imagescontener {
+
+
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border: black 2px solid;
+    text-align: center;
+
+
+}
+
+#imagescontener img {
+
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+}
+
+#imagescontener button {
+    position: absolute;
+   
+    transform: translateY(-50%);
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+#lift {
+    left: 0;
+    top: 50%;
+}
+
+#Right {
+    right: 0;
+    top: 50%;
+}
+
+#DELETE_img {
+    top: 20px;
+    right: 0;
+    width: 50px;
+    height: 30px;
+    
+    transform: translateX(-50%);
+}
+
+#ditailscontener {
+
+   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 300px;
+    padding: 20px;
+
+
+}
+#ditailscontener label {
+    margin-bottom: 5px;
+}
+
+#ditailscontener input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+}
+
+#ditailscontener button {
+    display: inline-block;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#ditailscontener button:hover {
+    background-color: #45a049;
+}
+
+@media screen and (max-width: 768px) {
+    #mainbox {
+        top: 50px; /* Adjusted top spacing for smaller screens */
+        flex-direction: column;
+    }
+
+    #imagescontener {
+        height: 400px; /* Adjusted height for smaller screens */
+    }
+
+    #imagescontener button {
+        padding: 6px 10px; /* Adjusted padding for smaller screens */
+    }
+
+    #DELETE_img {
+        top: 15px; /* Adjusted top spacing for smaller screens */
+        right: 20px;
+        width: 50px; /* Adjusted width for smaller screens */
+        height: 25px; /* Adjusted height for smaller screens */
+    }
+
+    #ditailscontener {
+        width: 90%; /* Adjusted width for smaller screens */
+        padding: 15px; /* Adjusted padding for smaller screens */
+    }
+
+    #ditailscontener button {
+        padding: 8px; /* Adjusted padding for smaller screens */
+    }
+}
