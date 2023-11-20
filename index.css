@@ -22,7 +22,7 @@ header h1 {
 
 #mainbox {
     position: relative;
-    top: 150px;
+    top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
