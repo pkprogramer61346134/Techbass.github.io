@@ -123,6 +123,8 @@ textarea {
     }
 
     #imagescontener {
+         position: relative;
+         width: 90%;
         height: 400px; /* Adjusted height for smaller screens */
     }
 
