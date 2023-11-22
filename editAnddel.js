@@ -1,7 +1,6 @@
 // Initial index
-const EDIT = document.getElementById("EDIT");
-const ADD = document.getElementById("ADD");
-const DELETE = document.getElementById("DELETE");
+
+const ditailscontener = document.getElementById("ditailscontener");
 let currentIndex = 0;
 
 // Array of image URLs
@@ -14,6 +13,8 @@ function updateImage() {
   // Assuming 'value' is an Image element, use the 'onload' event
 
   document.getElementById('imagesBox').src = imageList[currentIndex];
+ 
+  imagesfilesselcter(imageList.length, "setbk", 1);
 
 }
 
@@ -56,24 +57,26 @@ function buttons_click() {
 
 async function put_the_images() {
 
- 
-  ADD.addEventListener("click", async () => {
+
+  var ADD = document.getElementById("ADD");
+  if (ADD) {
+    ADD.addEventListener("click", async () => {
 
 
 
 
-    loadinger.classList.remove("displaynot");
-    loadinger.classList.add("loadinger");
-    obj[0].command = "ADD";
-    obj[0].filedata[0].Images = imageList;
-    obj[0].filedata[0].category = Category.value;
-    obj[0].filedata[0].brand = brand.value;
-    obj[0].filedata[0].Name = Name.value;
-    obj[0].filedata[0].detail = Item_Descriptions.value;
-    obj[0].filedata[0].model_no = Model.value;
-    obj[0].filedata[0].price = Price.value;
-    await get_and_set_value(obj);
-    window.close();
+      loadinger.classList.remove("displaynot");
+      loadinger.classList.add("loadinger");
+      obj[0].command = "ADD";
+      obj[0].filedata[0].Images = imageList;
+      obj[0].filedata[0].category = Category.value;
+      obj[0].filedata[0].brand = brand.value;
+      obj[0].filedata[0].Name = Name.value;
+      obj[0].filedata[0].detail = Item_Descriptions.value;
+      obj[0].filedata[0].model_no = Model.value;
+      obj[0].filedata[0].price = Price.value;
+      await get_and_set_value(obj);
+      window.close();
 
 
 
@@ -83,80 +86,83 @@ async function put_the_images() {
 
 
 
-  });
-
- 
-  EDIT.addEventListener("click", async () => {
-
-
-
-    loadinger.classList.remove("displaynot");
-    loadinger.classList.add("loadinger");
-    var cunterner = [];
-    obj[0].command = "EDIT";
-    obj[0].filedata[0].Items_id = id.value;
-    imageList.forEach(element => {
-      var fuch = element.indexOf('https://drive.google.com/uc?id=');
-      if (fuch == -1) {
-        cunterner.push(element);
-
-      } else {
-
-        cunterner.push(element.replace('https://drive.google.com/uc?id=', ''))
-      }
     });
-
-    obj[0].filedata[0].Images = cunterner;
-    obj[0].filedata[0].category = Category.value;
-    obj[0].filedata[0].brand = brand.value;
-    obj[0].filedata[0].Name = Name.value;
-    obj[0].filedata[0].detail = Item_Descriptions.value;
-    obj[0].filedata[0].model_no = Model.value;
-    obj[0].filedata[0].price = Price.value;
-    await get_and_set_value(obj);
-    window.close();
+  }
+  var EDIT = document.getElementById("EDIT");
+  if (EDIT) {
+    EDIT.addEventListener("click", async () => {
 
 
 
+      loadinger.classList.remove("displaynot");
+      loadinger.classList.add("loadinger");
+      var cunterner = [];
+      obj[0].command = "EDIT";
+      obj[0].filedata[0].Items_id = id.value;
+      imageList.forEach(element => {
+        var fuch = element.indexOf('https://drive.google.com/uc?id=');
+        if (fuch == -1) {
+          cunterner.push(element);
+
+        } else {
+
+          cunterner.push(element.replace('https://drive.google.com/uc?id=', ''))
+        }
+      });
+
+      obj[0].filedata[0].Images = cunterner;
+      obj[0].filedata[0].category = Category.value;
+      obj[0].filedata[0].brand = brand.value;
+      obj[0].filedata[0].Name = Name.value;
+      obj[0].filedata[0].detail = Item_Descriptions.value;
+      obj[0].filedata[0].model_no = Model.value;
+      obj[0].filedata[0].price = Price.value;
+      await get_and_set_value(obj);
+      window.close();
 
 
 
 
 
-  });
-
-  var DELETE = document.getElementById("DELETE");
-  DELETE.addEventListener("click", async () => {
 
 
-    loadinger.classList.remove("displaynot");
-    loadinger.classList.add("loadinger");
-    var cunterner = [];
-    obj[0].command = "DELETE";
-    obj[0].filedata[0].Items_id = id.value;
-    imageList.forEach(element => {
-      var fuch = element.indexOf('https://drive.google.com/uc?id=');
-      if (fuch == -1) {
-        cunterner.push(element);
 
-      } else {
-
-        cunterner.push(element.replace('https://drive.google.com/uc?id=', ''))
-      }
     });
+  }
+  if (EDIT) {
+    var DELETE = document.getElementById("DELETE");
+    DELETE.addEventListener("click", async () => {
 
-    obj[0].filedata[0].Images = cunterner;
-    obj[0].filedata[0].category = Category.value;
-    obj[0].filedata[0].brand = brand.value;
-    obj[0].filedata[0].Name = Name.value;
-    obj[0].filedata[0].detail = Item_Descriptions.value;
-    obj[0].filedata[0].model_no = Model.value;
-    obj[0].filedata[0].price = Price.value;
-    await get_and_set_value(obj);
-    console.log(obj);
-    window.close();
 
-  });
+      loadinger.classList.remove("displaynot");
+      loadinger.classList.add("loadinger");
+      var cunterner = [];
+      obj[0].command = "DELETE";
+      obj[0].filedata[0].Items_id = id.value;
+      imageList.forEach(element => {
+        var fuch = element.indexOf('https://drive.google.com/uc?id=');
+        if (fuch == -1) {
+          cunterner.push(element);
+
+        } else {
+
+          cunterner.push(element.replace('https://drive.google.com/uc?id=', ''))
+        }
+      });
+
+      obj[0].filedata[0].Images = cunterner;
+      obj[0].filedata[0].category = Category.value;
+      obj[0].filedata[0].brand = brand.value;
+      obj[0].filedata[0].Name = Name.value;
+      obj[0].filedata[0].detail = Item_Descriptions.value;
+      obj[0].filedata[0].model_no = Model.value;
+      obj[0].filedata[0].price = Price.value;
+      await get_and_set_value(obj);
+      console.log(obj);
+      window.close();
+
+    });
+  }
 
   var imagesBox = document.getElementById("imagesBox");
 
@@ -206,7 +212,28 @@ async function read_files(input) {
   });
 }
 
+function imagesfilesselcter(index, setbk, target) {
 
+  if (target == 1) {
+    var imagesinde = document.getElementById("imagesinde");
+    while (imagesinde.firstChild) {
+      imagesinde.removeChild(imagesinde.firstChild);
+  }
+    for (let o = 0; o < index; o++) {
+
+      var sname = document.createElement("samp");
+      sname.id = "selecter" + o;
+      sname.classList.add("roundsamp");
+     
+      imagesinde.appendChild(sname);
+    }
+
+
+
+  }
+
+
+}
 
 put_the_images();
 

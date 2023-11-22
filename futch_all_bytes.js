@@ -13,7 +13,7 @@ const Name = document.getElementById("Name");
 const Item_Descriptions = document.getElementById("Item_Descriptions");
 const Model = document.getElementById("Model");
 const Price = document.getElementById("Price");
-const loadinger  =  document.getElementById("loadinger");
+const loadinger = document.getElementById("loadinger");
 imageList = [];
 
 category_option.id = "category_option";
@@ -40,30 +40,30 @@ obj = [{
 }]
 
 
- async function fetchImagesAndSaveBuffers(imageUrl) {
-   
-  
-    
+async function fetchImagesAndSaveBuffers(imageUrl) {
 
-        fetch(imageUrl)
-            .then(response => response.blob())
-            .then(blob => {
-                var reader = new FileReader();
-                reader.onloadend = function () {
-                    var imageData = reader.result;
-                    console.log('Image Data:', imageData);
 
-                    // Now you have the image data in the 'imageData' variable
-                    // You can use it as needed
-                };
-                reader.readAsDataURL(blob);
-            })
-            .catch(error => {
-                console.error('Error fetching image data:', error);
-            });
-  
-   
-  }
+
+
+    fetch(imageUrl)
+        .then(response => response.blob())
+        .then(blob => {
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                var imageData = reader.result;
+                console.log('Image Data:', imageData);
+
+                // Now you have the image data in the 'imageData' variable
+                // You can use it as needed
+            };
+            reader.readAsDataURL(blob);
+        })
+        .catch(error => {
+            console.error('Error fetching image data:', error);
+        });
+
+
+}
 
 
 async function make_a_options(inputs) {
@@ -84,10 +84,10 @@ async function make_a_options(inputs) {
             getlist.id = result.message[index].Items_id;
             getlist.className = "Item_cloumn_CSS";
             getlist.Name = result.message[index].category;
-            const values =   result.message[index].Images;
+            const values = result.message[index].Images;
             var valuesr = [];
             valuesr = values.split(" ,");
-            img.src = "https://drive.google.com/uc?id=" +valuesr[0];
+            img.src = "https://drive.google.com/uc?id=" + valuesr[0];
             console.log(result.message[index].Images);
             h1.textContent = result.message[index].Name;
             p.textContent = result.message[index].detail;
@@ -102,11 +102,16 @@ async function make_a_options(inputs) {
             }
             if (argumentValue == result.message[index].Items_id) {
 
-                    DELETE.classList.remove("displaynot");
-                    EDIT.classList.remove("displaynot");
-                    DELETE.classList.add("buttse");
-                    EDIT.classList.add("buttse");
-
+                const EDIT = document.createElement("button");
+                const DELETE = document.createElement("button");
+                EDIT.textContent = "EDIT";
+                DELETE.textContent = "DELETE";
+                DELETE.classList.add("buttse");
+                EDIT.classList.add("buttse");
+                EDIT.id = "EDIT";
+                DELETE.id = "DELETE"
+                ditailscontener.appendChild(EDIT);
+                ditailscontener.appendChild(DELETE);
                 id.value = result.message[index].Items_id;
                 id.disabled = true;
                 Category.value = result.message[index].category;
@@ -114,32 +119,32 @@ async function make_a_options(inputs) {
                 Name.value = result.message[index].Name;
                 Item_Descriptions.textContent = result.message[index].detail;
                 Model.value = result.message[index].model_no;
-                Price.value =  result.message[index].price;
-                const values =   result.message[index].Images;
+                Price.value = result.message[index].price;
+                const values = result.message[index].Images;
                 var valuesr = [];
                 valuesr = values.split(" ,");
                 console.log(valuesr);
                 imageList.length = 0;
                 valuesr.forEach(element => {
-                
-                   
-              
-                    imageList.push( "https://drive.google.com/uc?id=" +element);
-                  
-                    
+
+
+
+                    imageList.push("https://drive.google.com/uc?id=" + element);
+
+
                 });
-              
-                 updateImage();
-                
-              
-               
-               
+
+                updateImage();
+
+
+
+
 
             }
 
-               
 
-            
+
+
             addOptionIfNotExists(category_option, result.message[index].category);
             addOptionIfNotExists(Items_id_option, result.message[index].Items_id);
             addOptionIfNotExists(brand_option, result.message[index].brand);
@@ -147,15 +152,24 @@ async function make_a_options(inputs) {
 
         }
 
-              if (id) {
-                if( id.value.length <= 0  ){
+        if (id) {
+            if (id.value.length <= 0) {
 
-                    ADD.classList.add("buttse");
-                   }
                 
-              }
+                const ADD = document.createElement("button");
+                ADD.textContent = "ADD";
+                ADD.classList.add("buttse");
+                ADD.id = "ADD";
+                ditailscontener.appendChild(ADD);
+            }
+
+        }
+        if (typeof put_the_images === 'function' && typeof put_the_images !== 'undefined') {
            
-               
+            put_the_images();
+        }
+       
+
         var mainbox_of_list = document.getElementById("mainbox");
         mainbox_of_list.appendChild(Items_id_option);
         mainbox_of_list.appendChild(category_option);
