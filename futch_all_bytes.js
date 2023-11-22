@@ -19,7 +19,7 @@ imageList = [];
 category_option.id = "category_option";
 Items_id_option.id = "Items_id_option";
 brand_option.id = "brand_option";
-Name_option.id = "Name_option ";
+Name_option.id = "Name_option";
 
 obj = [{
     "command": "Display",
@@ -77,11 +77,13 @@ async function make_a_options(inputs) {
             var getlist = document.createElement("li");
             var img = document.createElement("img");
             var h1 = document.createElement("h1");
+            h1.id = "name";
             var p = document.createElement("p");
             var h2 = document.createElement("h1");
 
             getlist.id = result.message[index].Items_id;
             getlist.className = "Item_cloumn_CSS";
+            getlist.Name = result.message[index].category;
             const values =   result.message[index].Images;
             var valuesr = [];
             valuesr = values.split(" ,");
@@ -99,6 +101,11 @@ async function make_a_options(inputs) {
                 Item_list.appendChild(getlist);
             }
             if (argumentValue == result.message[index].Items_id) {
+
+                    DELETE.classList.remove("displaynot");
+                    EDIT.classList.remove("displaynot");
+                    DELETE.classList.add("buttse");
+                    EDIT.classList.add("buttse");
 
                 id.value = result.message[index].Items_id;
                 id.disabled = true;
@@ -129,6 +136,10 @@ async function make_a_options(inputs) {
                
 
             }
+
+               
+
+            
             addOptionIfNotExists(category_option, result.message[index].category);
             addOptionIfNotExists(Items_id_option, result.message[index].Items_id);
             addOptionIfNotExists(brand_option, result.message[index].brand);
@@ -136,13 +147,20 @@ async function make_a_options(inputs) {
 
         }
 
+              if (id) {
+                if( id.value.length <= 0  ){
 
-
-
+                    ADD.classList.add("buttse");
+                   }
+                
+              }
+           
+               
         var mainbox_of_list = document.getElementById("mainbox");
         mainbox_of_list.appendChild(Items_id_option);
         mainbox_of_list.appendChild(category_option);
         mainbox_of_list.appendChild(brand_option);
+        mainbox_of_list.appendChild(Name_option);
         if ("listview" == inputs) {
 
             var Sreaching_by_ID = document.getElementById("Sreaching_by_ID");
@@ -151,7 +169,7 @@ async function make_a_options(inputs) {
 
             Sreaching_by_ID.setAttribute("list", "Items_id_option");
             Sreaching_by_Category.setAttribute("list", "category_option");
-            Sreaching_by_Name.setAttribute("list", "brand_option");
+            Sreaching_by_Name.setAttribute("list", "Name_option");
         } else {
 
 

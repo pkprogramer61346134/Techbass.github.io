@@ -108,6 +108,7 @@ header h1 {
 }
 
 
+
 .loadinger{
 
        position: absolute;
@@ -143,7 +144,7 @@ textarea {
     resize: none;
 }
 
-#ditailscontener button {
+.buttse {
     display: inline-block;
     background-color: #4caf50;
     color: #fff;
@@ -152,7 +153,7 @@ textarea {
     cursor: pointer;
 }
 
-#ditailscontener button:hover {
+.buttse:hover {
     background-color: #45a049;
 }
 
@@ -185,7 +186,7 @@ textarea {
         /* Adjusted padding for smaller screens */
     }
 
-    #ditailscontener button {
+    .buttse {
         padding: 8px; /* Adjusted padding for smaller screens */
     }
 }
