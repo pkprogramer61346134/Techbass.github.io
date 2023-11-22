@@ -11,10 +11,12 @@
         <h1>Techbass</h1>
     </header>
     <div id="mainbox">
+      <div id="loadinger" class="loadinger">
 
+      </div>
         <div id="imagescontener">
-             
-            <img src="https://m.media-amazon.com/images/I/71Lz10Ln2BL._SL1500_.jpg"  id="imagesBox" alt="">
+             <input type="file" id="inputfiles" style="display: none;" multiple>
+            <img   id="imagesBox" alt="" >
              <button id="lift"><</button>
              <button id="Right">></button>
              <button id="DELETE_img">DEL</button>
@@ -24,25 +26,27 @@
                    
 
             <label for="ID">ID:</label>
-            <input type="text" id="ID">
+            <input type="text" id="ID"  disabled >
             <label for="Category">Category:</label>
-            <input type="text" id="Category">
-            <label for="brand">brand:</label>
-            <input type="text" id="brand">
+            <input type="text" id="Category" autocomplete="off">
+            <label for="brand"  >brand:</label>
+            <input type="text" id="brand" autocomplete="off">
             <label for="Name">Name:</label>
-            <input type="text" id="Name">
+            <input type="text" id="Name"  autocomplete="off">
             <label for="Item_Descriptions">Item_Descriptions:</label>
             <textarea  id="Item_Descriptions" ></textarea>
             <label for="Model">Model:</label>
-            <input type="text" id="Model">
+            <input type="text" id="Model"  autocomplete="off">
             <label for="Price">Price:</label>
-            <input type="text" id="Price">
+            <input type="text" id="Price"  autocomplete="off">
             <button id="ADD">ADD</button>
             <button id="DELETE">DELETE</button>
             <button id="EDIT">EDIT</button>
 
 
         </div>
+
+        
         
         <script src="futch_all_bytes.js"></script>
        <script>make_a_options(argumentValue)</script>

@@ -1,4 +1,4 @@
-let url = "https://script.google.com/macros/s/AKfycbwtK_yPzpVFunUvksxMugblTSy-1Gx2GbpaBq1GajSNmoEGcSS5wRydpNS-EOJdJlEA/exec";
+let url = "https://script.google.com/macros/s/AKfycbxBm6RTfhe5XFIRB5YYVWeHSBBV8EVjSlodHSTnZyFalSZZ_XWd-FDa6V7Agx4tmTi6/exec";
 var stronge = [];
 const category_option = document.createElement("datalist");
 const Items_id_option = document.createElement("datalist");
@@ -13,10 +13,8 @@ const Name = document.getElementById("Name");
 const Item_Descriptions = document.getElementById("Item_Descriptions");
 const Model = document.getElementById("Model");
 const Price = document.getElementById("Price");
-imageList = [
-  
-    
-  ];
+const loadinger  =  document.getElementById("loadinger");
+imageList = [];
 
 category_option.id = "category_option";
 Items_id_option.id = "Items_id_option";
@@ -36,20 +34,46 @@ obj = [{
         "detail": "best RBG gaming mouse  made for gamer",
         "price": "300",
         "Images": [],
-        "model_no": "mouse7845"
+        "model_no": "mouse78xcfg45"
 
     }]
 }]
 
 
+ async function fetchImagesAndSaveBuffers(imageUrl) {
+   
+  
+    
+
+        fetch(imageUrl)
+            .then(response => response.blob())
+            .then(blob => {
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    var imageData = reader.result;
+                    console.log('Image Data:', imageData);
+
+                    // Now you have the image data in the 'imageData' variable
+                    // You can use it as needed
+                };
+                reader.readAsDataURL(blob);
+            })
+            .catch(error => {
+                console.error('Error fetching image data:', error);
+            });
+  
+   
+  }
+
 
 async function make_a_options(inputs) {
     try {
-        const result = await get_and_set_value();
+        const result = await get_and_set_value(obj);
         console.log(result.message);
         stronge.push(result.message);
         for (let index = 1; index < result.message.length; index++) {
-
+            loadinger.classList.remove("loadinger");
+            loadinger.classList.add("displaynot");
             var getlist = document.createElement("li");
             var img = document.createElement("img");
             var h1 = document.createElement("h1");
@@ -58,7 +82,11 @@ async function make_a_options(inputs) {
 
             getlist.id = result.message[index].Items_id;
             getlist.className = "Item_cloumn_CSS";
-            img.src = result.message[index].Images;
+            const values =   result.message[index].Images;
+            var valuesr = [];
+            valuesr = values.split(" ,");
+            img.src = "https://drive.google.com/uc?id=" +valuesr[0];
+            console.log(result.message[index].Images);
             h1.textContent = result.message[index].Name;
             p.textContent = result.message[index].detail;
             h2.textContent = result.message[index].price;
@@ -81,7 +109,24 @@ async function make_a_options(inputs) {
                 Model.value = result.message[index].model_no;
                 Price.value =  result.message[index].price;
                 const values =   result.message[index].Images;
-                imageList = values.split(" , ");
+                var valuesr = [];
+                valuesr = values.split(" ,");
+                console.log(valuesr);
+                imageList.length = 0;
+                valuesr.forEach(element => {
+                
+                   
+              
+                    imageList.push( "https://drive.google.com/uc?id=" +element);
+                  
+                    
+                });
+              
+                 updateImage();
+                
+              
+               
+               
 
             }
             addOptionIfNotExists(category_option, result.message[index].category);
@@ -131,11 +176,11 @@ async function make_a_options(inputs) {
     }
 }
 
-async function get_and_set_value() {
+async function get_and_set_value(objs) {
     try {
         const response = await fetch(url, {
             method: 'POST',
-            body: JSON.stringify(obj)
+            body: JSON.stringify(objs)
         });
 
         if (!response.ok) {

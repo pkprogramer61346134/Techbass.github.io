@@ -20,6 +20,36 @@ header h1 {
     margin: 0;
 }
 
+.displaynot{
+
+    display: none;
+}
+
+.loadinger{
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 150px;
+    width: 150px;
+  
+    border-radius: 50%;
+    
+    z-index: 1;
+    border: #2980b9 5px solid;
+    border-top: #2980b9 10px ;
+    animation: roteae 2s linear infinite;
+}
+
+@keyframes roteae {
+ from {
+     transform: rotate(0deg);
+ }
+ to {
+     transform: rotate(360deg);
+ }
+}
+
 #mainbox {
     position: relative;
     top: 100px;

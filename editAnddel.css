@@ -102,6 +102,35 @@ header h1 {
 #ditailscontener label {
     margin-bottom: 5px;
 }
+.displaynot{
+
+    display: none;
+}
+
+
+.loadinger{
+
+       position: absolute;
+       top: 35%;
+       height: 150px;
+       width: 150px;
+     
+       border-radius: 50%;
+       
+       z-index: 1;
+       border: #2980b9 5px solid;
+       border-top: #2980b9 10px ;
+       animation: roteae 2s linear infinite;
+}
+
+@keyframes roteae {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 #ditailscontener input,
 textarea {
