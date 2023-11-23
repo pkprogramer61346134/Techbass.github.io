@@ -1,4 +1,4 @@
-let url = "https://script.google.com/macros/s/AKfycbxBm6RTfhe5XFIRB5YYVWeHSBBV8EVjSlodHSTnZyFalSZZ_XWd-FDa6V7Agx4tmTi6/exec";
+let url = "https://script.google.com/macros/s/AKfycbzT3KKDEFHqr0DuXQDWG-lcmLHzAcvfboBdFyjscvcbqmuaHFPp-Fi17lBAfLcYb856/exec";
 var stronge = [];
 const category_option = document.createElement("datalist");
 const Items_id_option = document.createElement("datalist");
@@ -71,7 +71,15 @@ async function make_a_options(inputs) {
         const result = await get_and_set_value(obj);
         console.log(result.message);
         stronge.push(result.message);
+      
+         if(result.message.length <= 1)
+         {
+
+            loadinger.classList.remove("loadinger");
+            loadinger.classList.add("displaynot");
+         }
         for (let index = 1; index < result.message.length; index++) {
+          
             loadinger.classList.remove("loadinger");
             loadinger.classList.add("displaynot");
             var getlist = document.createElement("li");

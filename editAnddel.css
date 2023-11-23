@@ -59,7 +59,7 @@ header h1 {
 
 }
 
-#imagescontener button {
+#imagescontener button ,#ADD_imges{
     position: absolute;
    
     transform: translateY(-50%);
@@ -68,6 +68,19 @@ header h1 {
     border: none;
     padding: 8px 12px;
     cursor: pointer;
+}
+
+#ADD_imges{
+
+    position: absolute;
+    top: 5px;
+    left: 35px;
+    width: 50px;
+    height: 15px;
+    
+    transform: translateX(-50%);
+
+
 }
 
 #lift {
@@ -165,9 +178,11 @@ textarea {
    margin-left: 2px;
    margin-right: 2px;
    z-index: 1;
-   background-color: black;
+   border: black 1px solid;
+   background-color: white;
  
 }
+
 
 .buttse {
     display: inline-block;
@@ -200,12 +215,7 @@ textarea {
         padding: 6px 10px; /* Adjusted padding for smaller screens */
     }
 
-    #DELETE_img {
-        top: 15px; /* Adjusted top spacing for smaller screens */
-        right: 20px;
-        width: 50px; /* Adjusted width for smaller screens */
-        height: 25px; /* Adjusted height for smaller screens */
-    }
+  
 
     #ditailscontener {
         width: 70%; /* Adjusted width for smaller screens */
