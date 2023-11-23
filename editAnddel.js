@@ -170,6 +170,7 @@ async function put_the_images() {
 
     var inputfiles = document.getElementById("inputfiles");
     inputfiles.click();
+    console.log("openone");
     inputfiles.addEventListener("change", async function (event) {
       var selectedFiles = event.target.files;
 
@@ -235,7 +236,7 @@ function imagesfilesselcter(index, setbk, target) {
 
 }
 
-put_the_images();
+
 
 
 buttons_click();
