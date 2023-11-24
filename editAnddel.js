@@ -152,7 +152,7 @@ async function put_the_images() {
           cunterner.push(element.replace('https://drive.google.com/uc?id=', ''))
         }
       });
-
+      console.log(cunterner);
       obj[0].filedata[0].Images = cunterner;
       obj[0].filedata[0].category = Category.value;
       obj[0].filedata[0].brand = brand.value;
@@ -180,10 +180,24 @@ function imagesseleter() {
 
   inputfiles.addEventListener("change", async function (event) {
     var selectedFiles = event.target.files;
+   
 
     if (selectedFiles.length > 0) {
     
       for (let uc = 0; uc < selectedFiles.length; uc++) {
+        
+         var vlaue = imageList[0];
+
+         if (typeof vlaue === 'string') {
+          var valueLength = vlaue.length;
+          if(valueLength <= 31)
+          {
+             
+             imageList = [];
+          }
+         
+      }
+     
        
         imageList.push( await read_files(selectedFiles[uc]));
       }

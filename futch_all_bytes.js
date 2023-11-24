@@ -1,4 +1,4 @@
-let url = "https://script.google.com/macros/s/AKfycbzT3KKDEFHqr0DuXQDWG-lcmLHzAcvfboBdFyjscvcbqmuaHFPp-Fi17lBAfLcYb856/exec";
+let url = "https://script.google.com/macros/s/AKfycbz2OErwxdx9iNO2Xd1osB4BV37t80WqA_VjEQF-ZdyEN238lPwZijqsoK_Sc8X6qEIe/exec";
 var stronge = [];
 const category_option = document.createElement("datalist");
 const Items_id_option = document.createElement("datalist");
@@ -69,7 +69,7 @@ async function fetchImagesAndSaveBuffers(imageUrl) {
 async function make_a_options(inputs) {
     try {
         const result = await get_and_set_value(obj);
-        console.log(result.message);
+        
         stronge.push(result.message);
       
          if(result.message.length <= 1)
@@ -136,7 +136,7 @@ async function make_a_options(inputs) {
                 valuesr.forEach(element => {
 
 
-
+                     
                     imageList.push("https://drive.google.com/uc?id=" + element);
 
 
@@ -145,7 +145,7 @@ async function make_a_options(inputs) {
                 updateImage();
 
 
-
+                  break;
 
 
             }
@@ -175,6 +175,7 @@ async function make_a_options(inputs) {
         if (typeof put_the_images === 'function' && typeof put_the_images !== 'undefined') {
            
             put_the_images();
+            imagesfilesselcter(imageList.length, "setbk", 1);
         }
        
 
