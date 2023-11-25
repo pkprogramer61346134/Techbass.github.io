@@ -68,14 +68,18 @@ header h1 {
 }
 
 #sreachingoptions label {
+    
     font-weight: bold;
 }
 
 #sreachingoptions input {
+    margin-left:30px;;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+
 
 #ADD_Item_button {
     background-color: #4caf50;
@@ -124,22 +128,72 @@ header h1 {
 
 .Item_cloumn_CSS p {
     padding: 0 10px;
-    text-align: justify;
+    text-align: center;
     line-height: 1.5;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* Limit to two lines */
     -webkit-box-orient: vertical;
     overflow: hidden;
+    font-weight: bold;
 }
+
+#sreachingoptions input[id="Sreaching_by_Category"]
+{
+   margin-left: 1px;
+      
+
+}
+#sreachingoptions input[id="Sreaching_by_ID"]
+{
+    margin-left: 1px;
+      
+
+}
+
+#sreachingoptions input[id="Sreaching_by_ID"]
+{
+    margin-left: 1px;
+      
+
+}
+
+#sreachingoptions input[id="Sreaching_by_Name"]
+{
+    margin-left: 1px;
+      
+
+}
+
 
 @media screen and (max-width: 768px) {
     #sreachingoptions input,
     #ADD_Item_button {
-        width: auto;
+        width: 50%;
     }
 
     .Item_cloumn_CSS {
         width: 100%;
         margin: 10px 0;
     }
+
+    #sreachingoptions input[id="Sreaching_by_Category"]
+{
+   margin-left: 5px;
+      
+
+}
+#sreachingoptions input[id="Sreaching_by_ID"]
+{
+   margin-left: 60px;
+      
+
+}
+
+#sreachingoptions input[id="Sreaching_by_Name"]
+{
+    margin-left: 30px;
+      
+
+}
+
 }

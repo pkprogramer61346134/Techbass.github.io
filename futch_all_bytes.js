@@ -1,4 +1,4 @@
-let url = "https://script.google.com/macros/s/AKfycbz2OErwxdx9iNO2Xd1osB4BV37t80WqA_VjEQF-ZdyEN238lPwZijqsoK_Sc8X6qEIe/exec";
+let url = "https://script.google.com/macros/s/AKfycbzyCf3LRl8bhEXI9mglND_gbkb4tDlTJkw9KQzFCQevnvvj9QuhOUO27F3LWhV0xpPg/exec";
 var stronge = [];
 const category_option = document.createElement("datalist");
 const Items_id_option = document.createElement("datalist");
@@ -21,6 +21,8 @@ Items_id_option.id = "Items_id_option";
 brand_option.id = "brand_option";
 Name_option.id = "Name_option";
 
+
+
 obj = [{
     "command": "Display",
 
@@ -39,6 +41,14 @@ obj = [{
     }]
 }]
 
+
+if (argumentValue !== null) {
+    obj[0].filedata[0].command = "Displayselecter";
+    obj[0].filedata[0].Items_id = argumentValue;
+} else {
+    
+    console.log('Argument not found in the URL');
+}
 
 async function fetchImagesAndSaveBuffers(imageUrl) {
 
@@ -96,7 +106,7 @@ async function make_a_options(inputs) {
             var valuesr = [];
             valuesr = values.split(" ,");
             img.src = "https://drive.google.com/uc?id=" + valuesr[0];
-            console.log(result.message[index].Images);
+            
             h1.textContent = result.message[index].Name;
             p.textContent = result.message[index].detail;
             h2.textContent = result.message[index].price;
