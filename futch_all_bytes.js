@@ -1,4 +1,4 @@
-let url = "https://script.google.com/macros/s/AKfycbzyCf3LRl8bhEXI9mglND_gbkb4tDlTJkw9KQzFCQevnvvj9QuhOUO27F3LWhV0xpPg/exec";
+let url = "https://script.google.com/macros/s/AKfycbzVwS7zFTlhSsgFGbiKpKRPj1EYxF23q1N8nfFuZEVvfEmOKLg0IhP6GFL0MpK0LXES/exec";
 var stronge = [];
 const category_option = document.createElement("datalist");
 const Items_id_option = document.createElement("datalist");

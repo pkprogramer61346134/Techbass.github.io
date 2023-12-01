@@ -6,13 +6,14 @@ let currentIndex = 0;
 // Array of image URLs
 
 // Function to update the image source
-function updateImage() {
+async function updateImage() {
 
 
 
   // Assuming 'value' is an Image element, use the 'onload' event
+  console.log(imageList);
 
-  document.getElementById('imagesBox').src = imageList[currentIndex];
+  document.getElementById('imagesBox').src =  await readFileAsDataURL( imageList[currentIndex]);
 
   
 
@@ -20,7 +21,9 @@ function updateImage() {
 
 // Function to move to the previous image
 function moveLeft() {
+  
   currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;
+
   imagesfilesselcter(currentIndex, imageList.length, 3);
 
   updateImage();
@@ -68,18 +71,36 @@ async function put_the_images() {
 
 
 
-      loadinger.classList.remove("displaynot");
-      loadinger.classList.add("loadinger");
-      obj[0].command = "ADD";
-      obj[0].filedata[0].Images = imageList;
-      obj[0].filedata[0].category = Category.value;
-      obj[0].filedata[0].brand = brand.value;
-      obj[0].filedata[0].Name = Name.value;
-      obj[0].filedata[0].detail = Item_Descriptions.value;
-      obj[0].filedata[0].model_no = Model.value;
-      obj[0].filedata[0].price = Price.value;
-      await get_and_set_value(obj);
-      window.close();
+     // Assuming loadinger, senderimages, Category, brand, Name, Item_Descriptions, Model, Price, get_and_set_value, and obj are defined somewhere in your code
+
+try {
+  loadinger.classList.remove("displaynot");
+  loadinger.classList.add("loadinger");
+
+  // Use Promise.all to wait for all asynchronous operations in imageList
+  const geturl = await Promise.all(
+    imageList.map(async function (data) {
+      return await senderimages(data);
+    })
+  );
+
+  // Now geturl contains the results of all asynchronous operations
+  console.log(geturl);
+
+  obj[0].command = "ADD";
+  obj[0].filedata[0].Images = geturl;
+  obj[0].filedata[0].category = Category.value;
+  obj[0].filedata[0].brand = brand.value;
+  obj[0].filedata[0].Name = Name.value;
+  obj[0].filedata[0].detail = Item_Descriptions.value;
+  obj[0].filedata[0].model_no = Model.value;
+  obj[0].filedata[0].price = Price.value;
+
+  await get_and_set_value(obj);
+ 
+} catch (error) {
+  console.error("Error processing:", error);
+}
 
 
 
@@ -171,6 +192,19 @@ async function put_the_images() {
 
 }
 
+function readFileAsDataURL(file) {
+  return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+          resolve(event.target.result);
+      };
+      reader.onerror = (error) => {
+          reject(error);
+      };
+      reader.readAsDataURL(file);
+  });
+}
+
 function imagesseleter() {
 
 
@@ -199,7 +233,7 @@ function imagesseleter() {
       }
      
        
-        imageList.push( await read_files(selectedFiles[uc]));
+        imageList.push( selectedFiles[uc]);
       }
      
 
@@ -257,6 +291,8 @@ function imagesfilesselcter(index, setbk, target) {
   }
 
   if (target == 2) {
+
+   
     for (var i = 0; i < setbk; i++) {
 
 
