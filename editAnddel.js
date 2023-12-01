@@ -13,15 +13,33 @@ async function updateImage() {
   // Assuming 'value' is an Image element, use the 'onload' event
   console.log(imageList);
 
-  document.getElementById('imagesBox').src =  await readFileAsDataURL( imageList[currentIndex]);
 
-  
+
+  var currentImage = imageList[currentIndex];
+
+  if (typeof currentImage === 'string') {
+
+
+    document.getElementById('imagesBox').src = currentImage;
+  } else if (currentImage instanceof File) {
+
+    readFileAsDataURL(currentImage)
+      .then((dataUrl) => {
+
+        document.getElementById('imagesBox').src = dataUrl;
+      })
+      .catch((error) => {
+        console.error("Error reading image file:", error);
+      });
+  }
+
+
 
 }
 
 // Function to move to the previous image
 function moveLeft() {
-  
+
   currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;
 
   imagesfilesselcter(currentIndex, imageList.length, 3);
@@ -71,36 +89,43 @@ async function put_the_images() {
 
 
 
-     // Assuming loadinger, senderimages, Category, brand, Name, Item_Descriptions, Model, Price, get_and_set_value, and obj are defined somewhere in your code
+      // Assuming loadinger, senderimages, Category, brand, Name, Item_Descriptions, Model, Price, get_and_set_value, and obj are defined somewhere in your code
 
-try {
-  loadinger.classList.remove("displaynot");
-  loadinger.classList.add("loadinger");
+      try {
+        loadinger.classList.remove("displaynot");
+        loadinger.classList.add("loadinger");
 
-  // Use Promise.all to wait for all asynchronous operations in imageList
-  const geturl = await Promise.all(
-    imageList.map(async function (data) {
-      return await senderimages(data);
-    })
-  );
+        // Use Promise.all to wait for all asynchronous operations in imageList
+        var geturl = [];
+        for (const element of imageList) {
+          try {
+            const result = await senderimages(element);
+            console.log(result);
+            geturl.push(result);
+          } catch (error) {
+            console.error("Error processing image:", error);
+          }
+        }
 
-  // Now geturl contains the results of all asynchronous operations
-  console.log(geturl);
 
-  obj[0].command = "ADD";
-  obj[0].filedata[0].Images = geturl;
-  obj[0].filedata[0].category = Category.value;
-  obj[0].filedata[0].brand = brand.value;
-  obj[0].filedata[0].Name = Name.value;
-  obj[0].filedata[0].detail = Item_Descriptions.value;
-  obj[0].filedata[0].model_no = Model.value;
-  obj[0].filedata[0].price = Price.value;
+        // Now geturl contains the results of all asynchronous operations
+        console.log(geturl);
 
-  await get_and_set_value(obj);
- 
-} catch (error) {
-  console.error("Error processing:", error);
-}
+        obj[0].command = "ADD";
+        obj[0].filedata[0].Images = geturl;
+        obj[0].filedata[0].category = Category.value;
+        obj[0].filedata[0].brand = brand.value;
+        obj[0].filedata[0].Name = Name.value;
+        obj[0].filedata[0].detail = Item_Descriptions.value;
+        obj[0].filedata[0].model_no = Model.value;
+        obj[0].filedata[0].price = Price.value;
+
+        await get_and_set_value(obj);
+        window.close();
+
+      } catch (error) {
+        console.error("Error processing:", error);
+      }
 
 
 
@@ -123,16 +148,24 @@ try {
       var cunterner = [];
       obj[0].command = "EDIT";
       obj[0].filedata[0].Items_id = id.value;
-      imageList.forEach(element => {
-        var fuch = element.indexOf('https://drive.google.com/uc?id=');
-        if (fuch == -1) {
+      for (const element of imageList) {
+
+        if (typeof element === 'string') {
+
+
           cunterner.push(element);
+        } else if (element instanceof File) {
 
-        } else {
-
-          cunterner.push(element.replace('https://drive.google.com/uc?id=', ''))
+          try {
+            const result = await senderimages(element);
+            
+            cunterner.push(result);
+          } catch (error) {
+            console.error("Error processing image:", error);
+            cunterner.push(error);
+          }  
         }
-      });
+      }
 
       obj[0].filedata[0].Images = cunterner;
       obj[0].filedata[0].category = Category.value;
@@ -182,7 +215,7 @@ try {
       obj[0].filedata[0].model_no = Model.value;
       obj[0].filedata[0].price = Price.value;
       await get_and_set_value(obj);
-      
+
       window.close();
 
     });
@@ -194,14 +227,14 @@ try {
 
 function readFileAsDataURL(file) {
   return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-          resolve(event.target.result);
-      };
-      reader.onerror = (error) => {
-          reject(error);
-      };
-      reader.readAsDataURL(file);
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      resolve(event.target.result);
+    };
+    reader.onerror = (error) => {
+      reject(error);
+    };
+    reader.readAsDataURL(file);
   });
 }
 
@@ -214,30 +247,29 @@ function imagesseleter() {
 
   inputfiles.addEventListener("change", async function (event) {
     var selectedFiles = event.target.files;
-   
+
 
     if (selectedFiles.length > 0) {
-    
+
       for (let uc = 0; uc < selectedFiles.length; uc++) {
-        
-         var vlaue = imageList[0];
 
-         if (typeof vlaue === 'string') {
+        var vlaue = imageList[0];
+
+        if (typeof vlaue === 'string') {
           var valueLength = vlaue.length;
-          if(valueLength <= 31)
-          {
-             
-             imageList = [];
-          }
-         
-      }
-     
-       
-        imageList.push( selectedFiles[uc]);
-      }
-     
+          if (valueLength <= 31) {
 
-    
+            imageList = [];
+          }
+
+        }
+
+
+        imageList.push(selectedFiles[uc]);
+      }
+
+
+
 
       updateImage();
       imagesfilesselcter(imageList.length, "setbk", 1);
@@ -292,7 +324,7 @@ function imagesfilesselcter(index, setbk, target) {
 
   if (target == 2) {
 
-   
+
     for (var i = 0; i < setbk; i++) {
 
 
@@ -319,7 +351,7 @@ function imagesfilesselcter(index, setbk, target) {
 
   }
 
-  
+
 
 
 }

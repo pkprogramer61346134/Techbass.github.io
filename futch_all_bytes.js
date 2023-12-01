@@ -105,7 +105,7 @@ async function make_a_options(inputs) {
             const values = result.message[index].Images;
             var valuesr = [];
             valuesr = values.split(" ,");
-            img.src = "https://drive.google.com/uc?id=" + valuesr[0];
+            img.src =  valuesr[0];
             
             h1.textContent = result.message[index].Name;
             p.textContent = result.message[index].detail;
@@ -147,7 +147,7 @@ async function make_a_options(inputs) {
 
 
                      
-                    imageList.push("https://drive.google.com/uc?id=" + element);
+                    imageList.push( element);
 
 
                 });
